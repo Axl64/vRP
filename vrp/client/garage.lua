@@ -360,6 +360,10 @@ end
 function Garage:getVehicleCustomization(veh)
 
   custom.colours = {GetVehicleColours(veh)}
+  custom.color1Custom = {} 
+  custom.color1Custom[1],custom.color1Custom[2],custom.color1Custom[3] = GetVehicleCustomPrimaryColour(veh)
+  custom.color2Custom = {} 
+  custom.color2Custom[1], custom.color2Custom[2], custom.color2Custom[3] = GetVehicleCustomSecondaryColour(veh)
   custom.extra_colours = {GetVehicleExtraColours(veh)}
   custom.plate_index = GetVehicleNumberPlateTextIndex(veh)
   custom.plate_txt = GetVehicleNumberPlateText(veh)	
@@ -394,6 +398,14 @@ function Garage:setVehicleCustomization(veh, custom)
 
   if custom.colours then
     SetVehicleColours(veh, table.unpack(custom.colours))
+  end
+	
+   if custom.color1Custom then
+     SetVehicleCustomPrimaryColour(veh, custom.color1Custom[1], custom.color1Custom[2], custom.color1Custom[3])
+  end
+  
+  if custom.color2Custom then
+     SetVehicleCustomSecondaryColour(veh, custom.color2Custom[1], custom.color2Custom[2], custom.color2Custom[3])
   end
 
   if custom.extra_colours then
